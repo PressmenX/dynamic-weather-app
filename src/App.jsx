@@ -5,6 +5,7 @@ import WeatherCard from './components/WeatherCard.jsx';
 import LoadingSpinner from './components/LoadingSpinner.jsx';
 import ErrorData from './components/ErrorData.jsx';
 import DarkToggleButton from './components/DarkToggleButton.jsx';
+import FahrenheitToggleButton from './components/FahrenheitToggleButton.jsx';
 
 export default function App() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -13,20 +14,21 @@ export default function App() {
   const mainUrl = `${baseUrl}?q=${queryCity}&appid=${apiKey}&units=metric`;
   const { data, isLoading, error } = useFetch(mainUrl);
   const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("theme") === "dark"
+    localStorage.getItem('theme') === 'dark'
   );
+  const [isFahrenheit, setIsFahrenheit] = useState(false)
   const handleSearch = (city) => setQueryCity(city);
-  const handleDarkMode = (status) => setDarkMode(status)
+  const handleDarkMode = (status) => setDarkMode(status);
+  const handleFahrenheit = (status) => setIsFahrenheit(status)
 
   useEffect(() => {
     if (darkMode) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', "dark")
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
-    else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    };
   }, [darkMode]);
 
   const weatherData = {
@@ -51,13 +53,14 @@ export default function App() {
     windSpeed: data?.wind?.speed,
     feelsLike: data?.main?.feels_like,
   };
-  const status = { data, isLoading, error };
+  const status = { data, isLoading, error, isFahrenheit };
   return (
     <>
       <h1 className="bg-red-100 dark:bg-slate-800 dark:text-white">
         Hello world
       </h1>
-      <DarkToggleButton onToggle={handleDarkMode} darkMode={darkMode}/>
+      <FahrenheitToggleButton onFahrenheit={handleFahrenheit} isFahrenheit={isFahrenheit}/>
+      <DarkToggleButton onToggle={handleDarkMode} darkMode={darkMode} />
       <SearchInput onSearch={handleSearch} />
       <WeatherCard {...status} {...weatherData} />
     </>

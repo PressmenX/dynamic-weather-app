@@ -1,3 +1,4 @@
+import toFahrenheit from "../utils/toFahrenheit";
 import ErrorData from "./ErrorData";
 import LoadingSpinner from "./LoadingSpinner";
 
@@ -15,6 +16,7 @@ export default function WeatherCard({
   data,
   isLoading,
   error,
+  isFahrenheit,
 }) {
 
   if (isLoading) return <LoadingSpinner/>
@@ -41,7 +43,7 @@ export default function WeatherCard({
           <span>Wind Speed</span>
         </div>
         <div>
-          <span>{feelsLike}°C</span>
+          <span>{isFahrenheit ? `${toFahrenheit(feelsLike)}°F` : `${feelsLike}°C`}</span>
           <span>Feels Like</span>
         </div>
       </div>
