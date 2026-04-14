@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useFetch } from './hooks/useFetch.jsx';
 import SearchInput from './components/SearchInput.jsx';
 import WeatherCard from './components/WeatherCard.jsx';
+import LoadingSpinner from './components/LoadingSpinner.jsx';
+import ErrorData from './components/ErrorData.jsx';
 
 export default function App() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;

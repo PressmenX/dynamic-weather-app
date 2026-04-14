@@ -1,4 +1,5 @@
 import ErrorData from "./ErrorData";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function WeatherCard({
   queryCity,
@@ -16,7 +17,7 @@ export default function WeatherCard({
   error,
 }) {
 
-  if (isLoading) return <p>Sedang Memuat...</p>
+  if (isLoading) return <LoadingSpinner/>
   if (error) return <ErrorData message={error}/>
 
   return (

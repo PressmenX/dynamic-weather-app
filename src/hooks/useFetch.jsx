@@ -9,6 +9,7 @@ export const useFetch = (url) => {
     const loadData = async () => {
       setLoading(true);
       setError('')
+
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error('Failed to Load Data');
