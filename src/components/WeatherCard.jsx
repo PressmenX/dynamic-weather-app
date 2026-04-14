@@ -21,7 +21,7 @@ export default function WeatherCard({
   if (error) return <ErrorData message={error}/>
 
   return (
-    <div className="flex flex-col items-center mx-auto w-80 border ">
+    <div className="flex flex-col items-center mx-auto w-80 border">
       <h1 className="font-bold">
         {queryCity}, {country}
       </h1>
