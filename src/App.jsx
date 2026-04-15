@@ -40,9 +40,6 @@ export default function App() {
   const status = { data, isLoading, error, isFahrenheit };
   return (
     <>
-      <h1 className="bg-red-100 dark:bg-slate-800 dark:text-white">
-        Hello world
-      </h1>
       <FahrenheitToggleButton
         onFahrenheit={handleFahrenheit}
         isFahrenheit={isFahrenheit}

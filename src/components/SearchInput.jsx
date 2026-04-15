@@ -8,7 +8,7 @@ export default function SearchInput({onSearch}) {
   }
 
   return <div>
-    <input type="text" ref={inputRef} />
-    <button onClick={handleInput}>Click Me</button>
+    <input type="text" ref={inputRef} className="border"/>
+    <button onClick={handleInput}>Search</button>
   </div>
 }

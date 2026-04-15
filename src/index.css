@@ -4,3 +4,14 @@
 * {
   @apply transition-colors duration-300;
 }
+
+
+@layer base {
+  html {
+    @apply bg-white text-black;
+  }
+
+  html.dark {
+    @apply bg-slate-900
+  }
+}
