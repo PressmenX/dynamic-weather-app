@@ -32,7 +32,7 @@ export default function WeatherCard({
       <p>
         {date} | {hour}
       </p>
-      <span className="[grid-area:temp]">{Math.round(temp)}°C</span>
+      <span className="[grid-area:temp]">{isFahrenheit ? `${toFahrenheit(temp)}°F` : `${Math.round(temp)}°C`}</span>
       <div className="flex gap-4 p-2 bg-blue-950 text-white [&_div]:flex [&_div]:flex-col [&_div]:items-center [&_span:first-child]:font-bold [&_span:first-child]:text-xl">
         <div>
           <span>{humidity}%</span>
