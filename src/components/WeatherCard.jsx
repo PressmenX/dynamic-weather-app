@@ -2,8 +2,13 @@ import { Droplets, MapPin, Thermometer, Wind } from 'lucide-react';
 import toFahrenheit from '../utils/toFahrenheit';
 import ErrorData from './ErrorData';
 import LoadingSpinner from './LoadingSpinner';
+import { cn } from '../utils/cn';
+import { weatherVariants } from '../utils/weatherVariants';
+
+
 
 export default function WeatherCard({
+  weatherType,
   queryCity,
   country,
   date,
@@ -22,9 +27,10 @@ export default function WeatherCard({
   if (isLoading) return <LoadingSpinner />;
   if (error) return <ErrorData message={error} />;
 
+  
   return (
-    <div className="flex flex-col items-center mx-auto w-100 px-8 py-4 rounded-4xl shadow-xl shadow-black/70 bg-linear-to-br from-gray-950 via-gray-800 to-gray-300 text-white">
-      <span className="flex items-center gap-2 w-full text-md text-white/80">
+    <div className={cn(weatherVariants({weather : weatherType}))}>
+      <span className="flex items-center gap-2 w-full text-md opacity-70">
         <MapPin className="h-4 w-4" />
         {queryCity}, {country}
       </span>

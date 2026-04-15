@@ -4,6 +4,7 @@ import SearchInput from './components/SearchInput.jsx';
 import WeatherCard from './components/WeatherCard.jsx';
 import FahrenheitToggleButton from './components/FahrenheitToggleButton.jsx';
 import DarkToggleButton from './components/DarkToggleButton.jsx';
+import { weatherVariants } from './utils/weatherVariants.jsx';
 
 export default function App() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -16,6 +17,7 @@ export default function App() {
   const handleFahrenheit = (status) => setIsFahrenheit(status);
 
   const weatherData = {
+    weatherType : data?.weather[0]?.main.toLowerCase() ?? 'clear',
     queryCity: queryCity,
     country: data?.sys?.country,
     weather: data?.weather[0]?.description,
