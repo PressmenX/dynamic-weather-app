@@ -5,7 +5,7 @@ export default function DarkToggleButton() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <button onClick={toggleTheme} className="bg-gray-200 h-6 w-6 rounded-full shadow shadow-black dark:text-white">
+    <button onClick={toggleTheme} className="bg-gray-200 h-6 w-6 rounded-full shadow shadow-black  dark:text-white dark:bg-slate-700">
       {theme === 'dark' ? '☀︎' : '⏾'}
     </button>
   );
