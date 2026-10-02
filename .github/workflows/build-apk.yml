@@ -14,6 +14,9 @@ jobs:
           java-version: 21
       - run: npm install
       - run: npm run build
+        env:
+          VITE_WEATHER_API_KEY: ${{ secrets.VITE_WEATHER_API_KEY }}
+          VITE_WEATHER_BASE_URL: ${{ secrets.VITE_WEATHER_BASE_URL }}
       - run: npm i @capacitor/core @capacitor/cli @capacitor/android
       - run: npx cap init "Cuaca" com.pressmenx.cuaca --web-dir dist
       - run: npx cap add android
